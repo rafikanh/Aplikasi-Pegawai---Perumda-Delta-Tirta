@@ -1,5 +1,5 @@
 <?php
-include '../db_connect.php'; // Pastikan path ini benar
+include '../db_connect.php'; 
 
 header('Content-Type: application/json');
 
@@ -16,9 +16,8 @@ if ($result) {
         }
     }
 } else {
-    // Jika query gagal, masukkan pesan kesalahan
     echo json_encode(['error' => 'Query error: ' . $conn->error]);
-    exit; // Menghentikan eksekusi script
+    exit; 
 }
 
 echo json_encode($pegawai);

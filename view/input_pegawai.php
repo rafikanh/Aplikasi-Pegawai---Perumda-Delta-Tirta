@@ -19,7 +19,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: #87CEEB;">
                         <h2 class="text-center">Input Data Pegawai</h2>
                     </div>
                     <div class="card-body">
@@ -44,7 +44,6 @@
                                 <select class="form-control" id="id_ruangan" name="id_ruangan" required>
                                     <option value="">Pilih Ruangan</option>
                                     <?php
-                                    // Query untuk mengambil data ruangan
                                     $sql = "SELECT id_ruangan, keterangan FROM ruangan";
                                     $result = $conn->query($sql);
 
@@ -59,7 +58,7 @@
                                 </select>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Simpan Data</button>
+                            <button type="submit" class="btn btn-success">Simpan Data</button>
                             <a href="../index.php" class="btn btn-secondary">Kembali</a>
                         </form>
                     </div>
@@ -77,25 +76,24 @@
 
     <script>
         function simpanPegawai(event) {
-            event.preventDefault(); // Mencegah reload halaman
+            event.preventDefault(); 
 
             const formData = new FormData(document.getElementById('pegawaiForm'));
-            fetch('../process/create_pegawai.php', { // Path API untuk simpan data
+            fetch('../process/create_pegawai.php', { 
                     method: 'POST',
                     body: formData
                 }).then(response => response.json())
                 .then(data => {
                     if (data.message) {
-                        // Tampilkan SweetAlert di tengah halaman
                         Swal.fire({
-                            position: 'center', // Posisi di tengah
+                            position: 'center', 
                             icon: 'success',
                             title: data.message,
                             showConfirmButton: false,
-                            timer: 2000 // Durasi 3 detik
+                            timer: 2000 
                         }).then(() => {
                             // Redirect ke halaman index.php setelah alert ditutup
-                            window.location.href = '../index.php'; // Arahkan ke index.php di luar folder view
+                            window.location.href = '../index.php'; 
                         });
                     } else {
                         Swal.fire({

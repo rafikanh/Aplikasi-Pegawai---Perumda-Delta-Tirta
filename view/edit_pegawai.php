@@ -33,7 +33,7 @@ $conn->close();
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #87CEEB;">
                     <h2 class="text-center">Edit Data Pegawai</h2>
                 </div>
                 <div class="card-body">
@@ -59,7 +59,7 @@ $conn->close();
                             <select class="form-control" id="id_ruangan" name="id_ruangan" required>
                                 <option value="">Pilih Ruangan</option>
                                 <?php
-                                include '../db_connect.php'; // Memasukkan koneksi database lagi untuk mendapatkan data ruangan
+                                include '../db_connect.php'; 
                                 // Query untuk mengambil data ruangan
                                 $sql = "SELECT id_ruangan, keterangan FROM ruangan";
                                 $result = $conn->query($sql);
@@ -77,7 +77,7 @@ $conn->close();
                             </select>
                         </div>
                         
-                        <button type="submit" class="btn btn-success">Update Data</button>
+                        <button type="submit" class="btn btn-primary">Update Data</button>
                         <a href="../index.php" class="btn btn-secondary">Kembali</a>
                     </form>
                 </div>
@@ -104,7 +104,6 @@ $conn->close();
         }).then(response => response.json())
           .then(data => {
               if (data.message) {
-                  // Tampilkan SweetAlert di tengah halaman
                   Swal.fire({
                       icon: 'success',
                       title: data.message,

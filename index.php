@@ -20,16 +20,16 @@
         <table class="table table-bordered" id="pegawaiTable">
             <thead>
                 <tr>
-                    <th>NIP</th>
-                    <th>Nama</th>
-                    <th>Alamat</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Nama Ruangan</th>
-                    <th>Aksi</th>
+                    <th class="text-center" style="background-color: #87CEEB;">NIP</th>
+                    <th class="text-center" style="background-color: #87CEEB;">Nama</th>
+                    <th class="text-center" style="background-color: #87CEEB;">Alamat</th>
+                    <th class="text-center" style="background-color: #87CEEB;">Tanggal Lahir</th>
+                    <th class="text-center" style="background-color: #87CEEB;">Nama Ruangan</th>
+                    <th class="text-center" style="background-color: #87CEEB;">Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Data pegawai akan diisi di sini -->
+                
             </tbody>
         </table>
     </div>
@@ -53,11 +53,11 @@
                 })
                 .then(data => {
                     const tableBody = document.querySelector('#pegawaiTable tbody');
-                    tableBody.innerHTML = ''; // Kosongkan tabel
+                    tableBody.innerHTML = ''; 
 
                     // Cek jika data berisi pesan kesalahan
                     if (data.error) {
-                        alert(data.error); // Tampilkan pesan kesalahan
+                        alert(data.error); 
                         return;
                     }
 
@@ -75,7 +75,7 @@
                             <td>${pegawai.alamat}</td>
                             <td>${pegawai.tgl_lahir}</td>
                             <td>${pegawai.keterangan}</td>
-                            <td>
+                            <td class="text-center">
                                 <a href="view/edit_pegawai.php?nip=${pegawai.nip}" class="btn btn-warning btn-sm">Edit</a>
                                 <button class="btn btn-danger btn-sm" onclick="hapusPegawai('${pegawai.nip}')">Hapus</button>
                             </td>
@@ -102,7 +102,7 @@
                 cancelButtonText: "Batal"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    fetch('process/delete_pegawai.php', { // Sesuaikan path
+                    fetch('process/delete_pegawai.php', { 
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded',
@@ -122,7 +122,7 @@
                             text: "Data telah dihapus.",
                             icon: "success"
                         });
-                        loadPegawai(); // Reload data pegawai
+                        loadPegawai(); 
                     })
                     .catch(error => {
                         console.error('Error deleting pegawai:', error);
